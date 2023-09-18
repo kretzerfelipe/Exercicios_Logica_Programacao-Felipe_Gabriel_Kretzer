@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idNum1">Digite uma distância em metros:</label>
+            <input type="number" id="idNum1" name="nmNum1" value="">
+        </div>
+        <input type="button" value="Calcular medidas" onclick="calcularMedidas()">
+        <div class="border">
+            <input type="text" name="nmText" id="idText" value="" readonly>
+        </div>
+        <div>
+            <input type="text" id="idKM" name="nmKM" value="" readonly>
+        </div>
+        <div>
+            <input type="text" id="idHM" name="nmHM" value="" readonly>
+        </div>
+        <div>
+            <input type="text" id="idDAM" name="nmDAM" value="" readonly>
+        </div>
+        <div>
+            <input type="text" id="idDM" name="nmDM" value="" readonly>
+        </div>
+        <div>
+            <input type="text" id="idCM" name="nmCM" value="" readonly>
+        </div>
+        <div>
+            <input type="text" id="idMM" name="nmMM" value="" readonly>
+        </div>
+        <script>
+            var num1
+            var KM 
+            var HM 
+            function calcularMedidas() {
+                num1 = Number(document.getElementById("idNum1").value)
+                const KM = num1 / 1000
+                const HM = num1 / 100
+                const DAM = num1 / 10
+                const DM = num1 * 10
+                const CM = num1 * 100
+                const MM = num1 * 1000
+
+                console.log(num1)
+                console.log("KM= " + KM)
+                console.log("HM= " + HM)
+                console.log("DAM= " + DAM)
+                console.log("DM= " + DM)
+                console.log("CM= " + CM)
+                console.log("MM= " + MM)
+                
+                document.getElementById("idText").value = num1 + " metros equivalem a:"
+                document.getElementById("idKM").value = KM + " km."
+                document.getElementById("idHM").value = HM + " hm."
+                document.getElementById("idDAM").value = DAM + " dam."
+                document.getElementById("idDM").value = DM + " dm."
+                document.getElementById("idCM").value = CM + " cm."
+                document.getElementById("idMM").value = MM + " mm."
+
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idNum1">Digite um número inteiro:</label>
+            <input type="number" id="idNum1" name="nmNum1" value="">
+        </div>
+        <input type="button" value="Enviar" onclick="calcular()">
+        <div>
+            <label for="idAntecessor"></label>
+            <input type="text" id="idAntecessor" name="nmAntecessor" value="" readonly>
+        </div>
+        <div>
+            <label for="idSucessor"></label>
+            <input type="text" id="idSucessor" name="nmSucessor" value="" readonly>
+        </div>
+        <script>
+            var num1
+            var antecessor 
+            var sucessor 
+            function calcular() {
+                num1 = Number(document.getElementById("idNum1").value)
+                const antecessor = num1 - 1
+                const sucessor = num1 + 1
+
+                console.log(num1)
+                console.log("Antecessor= " + antecessor)
+                console.log("Sucessor= " + sucessor)
+
+                document.getElementById("idAntecessor").value = "O antecessor de " + num1 + " é " + antecessor + "."
+                document.getElementById("idSucessor").value = "O sucessor de " + num1 + " é " + sucessor + "."
+
+            }
+        </script>
+    </body>
+</html>

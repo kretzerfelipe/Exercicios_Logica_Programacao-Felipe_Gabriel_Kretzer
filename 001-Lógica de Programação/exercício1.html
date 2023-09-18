@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idNome">Qual é o seu nome?</label><br>
+            <input type="text" id="idNome" name="nmNome" value="Felipe">
+        </div><br>
+            <input type="button" value="Pegar Nome" onclick="pegarnome()">
+        <div><br>
+            <input type="text" id="idSaida" name="nmSaida" readonly> 
+        </div>
+        <script>
+            function pegarnome() {
+                nome = document.getElementById("idNome").value
+
+                console.log("Nome: " + nome)
+
+                document.getElementById("idSaida").value = "Olá " + nome + " ,é um pazer te conhecer."
+            }
+        </script>
+    </body>
+</html>

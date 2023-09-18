@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idNum1">Digite um número inteiro:</label>
+            <input type="number" id="idNum1" name="nmNum1" value="">
+        </div>
+        <input type="button" value="Enviar" onclick="calcular()">
+        <div>
+            <label for="idDobro"></label>
+            <input type="text" id="idDobro" name="nmdobro" value="" v>
+        </div>
+        <div>
+            <label for="idTerça"></label>
+            <input type="text" id="idTerça" name="nmterçaparte" value="" readonly>
+        </div>
+        <script>
+            var num1
+            var dobro 
+            var terçaparte 
+            function calcular() {
+                num1 = Number(document.getElementById("idNum1").value)
+                const dobro = num1 * 2
+                const terçaparte = num1 / 3
+
+                console.log(num1)
+                console.log("Metade= " + dobro)
+                console.log("Terça parte= " + terçaparte)
+
+                document.getElementById("idDobro").value = "O dobro de " + num1 + " é " + dobro + "."
+                document.getElementById("idTerça").value = "O terça parte de " + num1 + " é " + terçaparte + "."
+
+            }
+        </script>
+    </body>
+</html>
