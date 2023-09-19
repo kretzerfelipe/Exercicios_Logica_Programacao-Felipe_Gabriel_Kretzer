@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idPreço">Preço normal do produto:</label>
+            <input type="number" name="nmPreço" id="idPreço">
+        </div>
+        <input type="button" value="Calcular desconto" onclick="calcularPreço()"> 
+        <div>
+            <label for="idDesconto">Preço promocional do produto:</label>
+            <input type="text" name="nmDesconto" id="idDesconto">
+        </div>
+        <script>
+            function calcularPreço() {
+                let preço = Number(document.getElementById("idPreço")).value
+                const desconto = preço * 0.05
+                const preçoDesconto = preço - desconto
+                document.getElementById("idDesconto").value = "O preço promocional do produto é de " + preçoDesconto + " reais"
+            }
+        </script>
+    </body>
+</html>

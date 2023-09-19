@@ -33,11 +33,8 @@
             <input type="text" id="idMM" name="nmMM" value="" readonly>
         </div>
         <script>
-            var num1
-            var KM 
-            var HM 
             function calcularMedidas() {
-                num1 = Number(document.getElementById("idNum1").value)
+                let num1 = Number(document.getElementById("idNum1").value)
                 const KM = num1 / 1000
                 const HM = num1 / 100
                 const DAM = num1 / 10

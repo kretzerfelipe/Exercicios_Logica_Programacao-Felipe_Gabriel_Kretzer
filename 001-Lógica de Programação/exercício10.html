@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idPreço">Qual é a preço da sua parede?</label>
+            <input type="number" id="idPreço" name="nmPreço" value="">
+        </div>
+        <input type="button" value="Calcular Dólares" onclick="calcularLarguraes()">
+        <div>
+            <input type="text" id="idDesconto" name="nmDesconto">
+        </div>
+        <script>
+            function calcularLarguraes() {
+                let preço = Number(document.getElementById("idPreço").value)
+                const desconto = preço * 0.05
+                const preçoPromocional = preço - desconto
+                console.log(desconto)
+                document.getElementById("idDesconto").value = "O preço promocional do produto é de " + preçoPromocional + " reais"
+            }
+        </script>
+    </body>
+</html>
