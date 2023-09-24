@@ -11,12 +11,24 @@
         <input type="number" id="idNum1" name="nmNum1">
     </div>
     <div>
-        <label for="idNum2">Digite um número aqui:</label>
-        <input type="number" id="idNum2" name="nmNum2">
+        <input type="radio" id="idSoma" name="nmSinal"/>
+        <label for="idSoma">Soma</label>
     </div>
     <div>
-        <label for="idSinal"></label>
-        <input type="text" id="idSinal" name="nmSinal">
+        <input type="radio" id="idSubtração" name="nmSinal"/>
+        <label for="idSubtação">Subtração</label>
+    </div>
+    <div>
+        <input type="radio" id="idMultiplicação" name="nmSinal"/>
+        <label for="idMultiplicação">Multiplicação</label>
+    </div>
+    <div>
+        <input type="radio" id="idDivisão" name="nmSinal"/>
+        <label for="idDivisão">Divisão</label>
+    </div>
+    <div>
+        <label for="idNum2">Digite um número aqui:</label>
+        <input type="number" id="idNum2" name="nmNum2">
     </div>
     <input type="button" value="Qual número é maior" onclick="calcular()">
     <div>
@@ -24,11 +36,32 @@
     </div>
     <script>
         function calcular() {
-            let num1 = document.getElementById("idNum1").value
-            let num2 = document.getElementById("idNum2").value
-            let sinal = document.getElementById("idSinal").value
-            let resultado
+            let num1 = Number(document.getElementById("idNum1").value)
+            let num2 = Number(document.getElementById("idNum2").value)
+            let soma = document.getElementById("idSoma").checked
+            let subtração = document.getElementById("idSubtração").checked
+            let multiplicação = document.getElementById("idMultiplicação").checked
+            let divisão = document.getElementById("idDivisão").checked
+            const resultadosoma = num1 + num2
+            const resultadosubtração = num1 - num2
+            const resultadomultiplicação = num1 * num2
+            const resultadodivisão = num1 / num2
             
+            if (soma) {
+                document.getElementById("idSaida").value = num1 + "+" + num2 + "=" + resultadosoma
+            }  
+            
+            if (subtração) {
+                document.getElementById("idSaida").value = num1 + "-" + num2 + "=" + resultadosubtração
+            } 
+            
+            if (multiplicação) {
+                document.getElementById("idSaida").value = num1 + "*" + num2 + "=" + resultadomultiplicação
+            } 
+
+            if (divisão) {
+                document.getElementById("idSaida").value = num1 + "/" + num2 + "=" + resultadodivisão
+            }
         }
     </script>
 </body>

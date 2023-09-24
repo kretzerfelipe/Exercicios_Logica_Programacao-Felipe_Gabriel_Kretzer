@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <fieldset>
+                <legend>Retângulo</legend>
+                <label for="idBase1"></label><br>
+                <input type="number" id="idBase1" name="nmBase1"><br>
+
+                <label for="idAltura1"></label><br>
+                <input type="number" id="idAltura1" name="nmAltura1"><br>
+                
+                <input type="button" value="Calcular área do Retângulo" onclick="calcularRetângulo()"><br>
+                <output id="idOutRetângulo"></output>
+            </fieldset>
+            <fieldset>
+                <legend>Triângulo Retângulo</legend>
+                <label for="idBase2"></label><br>
+                <input type="number" id="idBase2" name="nmBase2"><br>
+
+                <label for="idAltura2"></label><br>
+                <input type="number" id="idAltura2" name="nmAltura2"><br>
+                
+                <input type="button" value="Calcular área do Triângulo Retângulo" onclick="calcularTriânguloRetângulo()"><br>
+                <output id="idOutTriânguloRetângulo"></output>
+            </fieldset>
+            <fieldset>
+                <legend>Triângulo Equilátero</legend>
+                <label for="idLado"></label><br>
+                <input type="number" id="idLado" name="nmLado"><br>
+                
+                <input type="button" value="Calcular área do Triângulo Equilátero" onclick="calcularTriânguloEquilátero()"><br>
+                <output id="idOutTriânguloEquilátero"></output><br>
+            </fieldset>
+            <fieldset>
+                <legend>Círculo</legend>
+                <label for="idRaio"></label><br>
+                <input type="number" id="idRaio" name="nmRaio"><br>
+                
+                <input type="button" value="Calcular área do Círculo" onclick="calcularCírculo()"><br>
+                <output id="idOutCírculo"></output>
+            </fieldset>
+
+            <script> 
+                function calcularRetângulo() {
+                let base1 = Number(document.getElementById("idBase1").value)
+                let altura1 = Number(document.getElementById("idAltura1").value)
+                const area1 = base1 * altura1
+                document.getElementById("idOutRetângulo").value = "Área é igual a: " + area1 + "m²"
+            }
+                function calcularTriânguloRetângulo() {
+                let base2 = Number(document.getElementById("idBase2").value)
+                let altura2 = Number(document.getElementById("idAltura2").value)
+                const area2 = base2 * altura2 / 2
+                document.getElementById("idOutTriânguloRetângulo").value = "Área é igual a: " + area2 + "m²"
+            }
+                function calcularTriânguloEquilátero() {
+                let lado = Number(document.getElementById("idLado").value)
+                const area3 = ((lado ** 2) *  Math.sqrt(3) )/4
+                document.getElementById("idOutTriânguloEquilátero").value = "Área é igual a: " + area3 + "m²"
+            }
+            function calcularCírculo() {
+                let raio = Number(document.getElementById("idRaio").value)
+                const area4 = Math.PI * raio * raio
+                document.getElementById("idOutCírculo").value = "Área é igual a: " + area4 + "m²"
+            }
+            </script>
+        </div>
+    </body>
+</html>

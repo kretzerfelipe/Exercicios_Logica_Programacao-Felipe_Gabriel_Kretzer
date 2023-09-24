@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="idUser"></label>
+        <input type="text" id="idUser" name="nmUser">
+    </div>
+    <div>
+        <label for="idSenha"></label>
+        <input type="password" id="idSenha" name="nmSenha">
+    </div>
+    <input type="button" value="Entrar" onclick="entrar()">
+    <div>
+        <output type="text" id="idMensagem" name="nmMensagem"></output>
+    </div>
+
+    <script>
+        function entrar() {
+            let user = document.getElementById("idUser").value
+            let senha = document.getElementById("idSenha").value
+
+            if (((user == "Aluno1") && (senha == "Trocar123")) || ((user == "Aluno2") && (senha == "Senha@123")) || ((user == "Aluno3") && (senha == "123Trocar"))) {
+                document.getElementById("idMensagem").value = "Acesso permitido"
+            } else if (((user == "Aluno1") && (senha != "Trocar123")) || ((user == "Aluno2") && (senha != "Senha@123")) || ((user == "Aluno3") && (senha != "123Trocar"))) {
+                document.getElementById("idMensagem").value = "Senha incorreta"
+            } else if (((user != "Aluno1") && (senha == "Trocar123")) || ((user != "Aluno2") && (senha == "Senha@123")) || ((user != "Aluno3") && (senha == "123Trocar"))) {
+                document.getElementById("idMensagem").value = "Usuário incorreto"
+            } else {
+                document.getElementById("idMensagem").value = "Senha e usuário incorretos"
+            }
+        }
+        
+    </script>
+</body>
+</html>

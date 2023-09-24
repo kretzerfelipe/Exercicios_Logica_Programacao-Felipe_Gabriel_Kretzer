@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idPreço"></label>
+            <input type="number" id="idPreço" name="nmPreço">
+        </div>
+        <input type="button" value="Calcular lucro" onclick="calcular()">
+        <div>
+            <output type="text" id="idSaida" name="nmSaida">
+        </div>
+        <script>
+            function calcular() {
+                let preço = Number(document.getElementById("idPreço").value)
+                const preçofinal1 = preço / 100 * 150
+                const preçofinal2 = preço / 100 * 135
+
+                if (preço < 20) {
+                    document.getElementById("idSaida").value = "O preço final do produto é " + preçofinal1
+                }
+                if (preço >= 20)  {
+                    document.getElementById("idSaida").value = "O preço final do produto é " + preçofinal2
+                }
+            }
+        </script>
+    </body>
+</html>
