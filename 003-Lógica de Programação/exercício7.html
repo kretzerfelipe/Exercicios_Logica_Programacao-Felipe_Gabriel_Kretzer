@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="idNome"></label>
+        <input type="text" id="idNome" name="nmNome">
+    </div>
+    <div>
+        <input type="radio" id="idMasc" name="nmGênero">
+        <label for="idMasc">Masculino</label>
+    </div>
+    <div>
+        <input type="radio" id="idFem" name="nmGênero">
+        <label for="idFem">Feminino</label>
+    </div>
+    <div>
+        <label for="idPreço"></label>
+        <input type="number" id="idPreço" name="nmPreço">
+    </div>
+    <input type="button" value="Calcular desconto" onclick="calcularDesconto()">
+    <div>
+        <output id="idOut"></output>
+    </div>
+
+    <script>
+        function calcularDesconto() {
+            let nome = document.querySelector("#idNome").value
+            let fem = document.querySelector("#idFem").checked
+            let masc = document.querySelector("#idMasc").checked
+            let preço = Number(document.querySelector("#idPreço").value)
+            const preçodescfem = preço / 100 * 87
+            const preçodescmasc = preço / 100 * 95
+
+            if (fem) {
+                document.querySelector("#idOut").value = "Olá " + nome + ". Seu desconto foi de 13%, o preço final da compra foi de " + preçodescfem + " reais."
+            } else if (masc) {
+                document.querySelector("#idOut").value = "Olá " + nome + ". Seu desconto foi de 5%, o preço final da compra foi de " + preçodescmasc + " reais."
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idLinha1">Linha 1</label>
+            <input type="number" id="idLinha1" name="nmLinha1">
+        </div>
+        <div>
+            <label for="idLinha2">Linha 2</label>
+            <input type="number" id="idLinha2" name="nmLinha2">
+        </div>
+        <div>
+            <label for="idLinha3">Linha 3</label>
+            <input type="number" id="idLinha3" name="nmLinha3">
+        </div>
+        <input type="button" value="Verificar" onclick="verificar()">
+        <output id="idOut"></output>
+
+        <script>
+            function verificar() {
+                let linha1 = Number(document.querySelector("#idLinha1").value)
+                let linha2 = Number(document.querySelector("#idLinha2").value)
+                let linha3 = Number(document.querySelector("#idLinha3").value)
+
+                if (((linha1 + linha2) > linha3) && ((linha2 + linha3) > linha1) && ((linha1 + linha3) > linha2)) {
+                    document.querySelector("#idOut").value = "É possível montar um triângulo."
+                } else {
+                    document.querySelector("#idOut").value = "Não é possível montar um triângulo."
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="idNum">Digite um ano</label>
+        <input type="number" id="idNum" name="nmNum">
+    </div>
+    <input type="button" value="Bissexto ou não?" onclick="PI()">
+    <output type="text" id="idOut" name="nmOut" ></output>
+
+    <script>
+        function PI() {
+            let num = Number(document.querySelector("#idNum").value)
+            if (num%4 == 0) {
+                document.querySelector("#idOut").value = "Bissexto"
+            } else if (num%4 != 0) {
+                document.querySelector("#idOut").value = "Normal"
+            }
+        }
+    </script>
+</body>
+</html>

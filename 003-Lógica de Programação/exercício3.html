@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idNota1">Nota 1:</label>
+            <input type="number" id="idNota1" name="nmNota1" value="" max="10">
+        </div>
+        <div>
+            <label for="idNota2">Nota 2:</label>
+            <input type="number" id="idNota2" name="nmNota2" value="" max="10">
+        </div>
+        <input type="button" value="Calcular" onclick="calcularNota()">
+        <div>
+            <output type="text" id="idMédia" name="nmMédia" value="" readonly></output>
+        </div>
+
+        <script>
+            function calcularNota() {
+                let num1 = Number(document.getElementById("idNota1").value)
+                let num2 = Number(document.getElementById("idNota2").value)
+                const resulMédia = (num1 + num2) / 2
+
+                console.log(num1)
+                console.log(num2)
+                console.log("Média final= " + resulMédia)
+
+                if (resulMédia >= 7) {
+                    document.getElementById("idMédia").value = "Sua média foi " + resulMédia + ". Você teve um bom aproveitamento"
+                } else if (resulMédia < 7) {
+                    document.getElementById("idMédia").value = "Sua média foi " + resulMédia + ". Você não teve um bom aproveitamento"
+                }
+               
+            }
+        </script>
+    </body>
+</html>

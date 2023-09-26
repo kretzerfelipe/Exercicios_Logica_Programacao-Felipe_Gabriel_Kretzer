@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="idVelocidade">Velocidade</label>
+    <input type="number" id="idVelocidade" name="nmVelocidade">
+
+    <input type="button" value="Enviar" onclick="calcularMulta()">
+
+    <input type="text" id="idMulta" name="nmMulta">
+
+    <script>
+        function calcularMulta() {
+            let velocidade = Number(document.querySelector("#idVelocidade").value)
+            let multa = (velocidade - 80) * 5
+
+            if (velocidade <= 80) {
+                document.querySelector("#idMulta").value = "Você não foi multado."
+            } else {
+                document.querySelector("#idMulta").value = "Você foi multado em " + multa + " reais."
+            }
+        }
+    </script>
+</body>
+</html>
