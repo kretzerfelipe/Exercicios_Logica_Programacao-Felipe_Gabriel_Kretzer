@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <output id="idOut"></output>
+        </div>
+        
+        <script>
+            var saida = "Inicio "
+            var cont = 30
+            while (cont >= 0) {
+                saida = saida + cont + "; "
+                cont--
+                if (cont%4 == 0) {
+                    saida = saida + "[" + cont + "]" + " "
+                } else {
+                    
+                }
+            }
+            saida = saida + " Acabou"
+            document.querySelector("#idOut").value = saida
+        </script>
+    </body>
+</html>

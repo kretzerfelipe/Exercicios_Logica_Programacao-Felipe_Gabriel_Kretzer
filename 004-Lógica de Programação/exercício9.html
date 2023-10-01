@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="idNum1">Digite o primeiro número</label><br>
+        <input type="number" id="idNum1" name="nmNum1"><br>
+    </div>
+    <div>
+        <label for="idNum2">Digite o segundo númer</label><br>
+        <input type="number" id="idNum2" name="nmNum2"><br>
+    </div>
+    <div>
+        <label for="idInc">Digite o incremento</label><br>
+        <input type="number" id="idInc" name="nmInc"><br>
+    </div>
+    <input type="button" value="Incrementar" onclick="incrementar()"><br>
+    <div>
+        <label for="idResult"></label>
+        <output type="text" id="idResult" name="nmResult"></output>
+    </div>
+    <script>
+        function incrementar() {
+            let num1 = Number(document.querySelector("#idNum1").value)
+            let num2 = Number(document.querySelector("#idNum2").value)
+            let inc = Number(document.querySelector("#idInc").value)
+            let saida = "Inicio "
+                if (inc < 0) {
+                    inc = inc * -1
+                    console.log(inc)
+                }
+                if (num1 < num2) {
+                    for (var i = num1; i <= num2; i += inc) {
+                        console.log("For= " + i)
+                        saida += i + " "
+                    }
+                } else if (num2 < num1) {
+                    for (var i = num1; i >= num2; i -= inc) {
+                        console.log("For= " + i)
+                        saida += i + " "
+                    }
+                } 
+                
+                saida +=  "Acabou"
+                document.querySelector("#idResult").value = saida
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <label for="idNum1">Digite o primeiro número</label><br>
+        <input type="number" id="idNum1" name="nmNum1"><br>
+        <label for="idNum2">Digite o segundo númer</label><br>
+        <input type="number" id="idNum2" name="nmNum2"><br>
+        <div>
+            <input type="radio" id="idPar" name="nmSinal">
+            <label for="idPar">Par</label>
+    
+            <input type="radio" id="idImpar" name="nmSinal">
+            <label for="idImpar">Ímpar</label>
+        </div><br>
+        <input type="button" value="Incrementar" onclick="listarNúmeros()"><br>
+        <label for="idResult"></label>
+        <output type="text" id="idResult" name="nmResult"></output>
+
+        <script>
+            function listarNúmeros() {
+            let par = document.querySelector("#idPar").checked
+            let ímpar = document.querySelector("#idImpar").checked
+            let num1 = Number(document.querySelector("#idNum1").value)
+            let num2 = Number(document.querySelector("#idNum2").value)
+            let saida = ""
+            if ((num1 < num2) && (par)) {
+                    for (var i = num1; i <= num2; i++) {
+                        if (i%2 == 0){
+                            console.log("For= " + i)
+                            saida += i + " "
+                        }
+                    }
+                } else if ((num2 < num1) && (par)) {
+                    for (var i = num1; i >= num2; i--) {
+                        if (i%2 == 0){
+                            console.log("For= " + i)
+                            saida += i + " "
+                        }
+                    }
+                } else if ((num1 < num2) && (ímpar)) {
+                    for (var i = num1; i <= num2; i++) {
+                        if (i%2 != 0){
+                            console.log("For= " + i)
+                            saida += i + " "
+                        }
+                    }
+                } else if ((num2 < num1) && (ímpar)) {
+                    for (var i = num1; i >= num2; i--) {
+                        if (i%2 != 0){
+                            console.log("For= " + i)
+                            saida += i + " "
+                        }
+                    }
+                }
+                document.querySelector("#idResult").value = saida
+            }
+        </script>
+    </body>
+</html>

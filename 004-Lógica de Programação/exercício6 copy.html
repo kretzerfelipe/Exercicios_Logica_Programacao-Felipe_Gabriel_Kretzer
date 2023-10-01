@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <output id="idOut"></output>
+        <script>
+            var saida = "Começou "
+            for (let i = 30; i >=0 ; i--) {
+                if (i%4 == 0) {
+                    saida = saida + "[" + i + "] "
+                } else {
+                    saida = saida + i + " "
+                }
+            }
+            saida = saida + "Acabou"
+            document.querySelector("#idOut").value = saida
+        </script>
+    </body>
+</html>

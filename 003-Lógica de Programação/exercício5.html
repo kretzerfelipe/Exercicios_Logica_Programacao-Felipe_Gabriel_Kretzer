@@ -10,15 +10,15 @@
         <label for="idNum">Digite um ano</label>
         <input type="number" id="idNum" name="nmNum">
     </div>
-    <input type="button" value="Bissexto ou não?" onclick="PI()">
+    <input type="button" value="Bissexto ou não?" onclick="bissexto()">
     <output type="text" id="idOut" name="nmOut" ></output>
 
     <script>
-        function PI() {
+        function bissexto() {
             let num = Number(document.querySelector("#idNum").value)
-            if (num%4 == 0) {
+            if ((num%400 == 0) || ((num%4 == 0) && (num%100 != 0)))  {
                 document.querySelector("#idOut").value = "Bissexto"
-            } else if (num%4 != 0) {
+            } else {
                 document.querySelector("#idOut").value = "Normal"
             }
         }

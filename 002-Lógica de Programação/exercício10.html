@@ -20,19 +20,30 @@
     </div>
 
     <script>
+        var user1 = "Aluno1"
+        var user2 = "Aluno2"
+        var user3 = "Aluno3"
+        var senha1 = "Trocar123"
+        var senha2 = "Senha@123"
+        var senha3 = "123Trocar"
+        var contTentativa = 0
+
         function entrar() {
+            contTentativa++
             let user = document.getElementById("idUser").value
             let senha = document.getElementById("idSenha").value
 
-            if (((user == "Aluno1") && (senha == "Trocar123")) || ((user == "Aluno2") && (senha == "Senha@123")) || ((user == "Aluno3") && (senha == "123Trocar"))) {
-                document.getElementById("idMensagem").value = "Acesso permitido"
-            } else if (((user == "Aluno1") && (senha != "Trocar123")) || ((user == "Aluno2") && (senha != "Senha@123")) || ((user == "Aluno3") && (senha != "123Trocar"))) {
-                document.getElementById("idMensagem").value = "Senha incorreta"
-            } else if (((user != "Aluno1") && (senha == "Trocar123")) || ((user != "Aluno2") && (senha == "Senha@123")) || ((user != "Aluno3") && (senha == "123Trocar"))) {
-                document.getElementById("idMensagem").value = "Usuário incorreto"
-            } else {
-                document.getElementById("idMensagem").value = "Senha e usuário incorretos"
-            }
+            if (contTentativa >= 3){
+                if (((user == user1) && (senha == senha1)) || ((user == user2) && (senha == senha2)) || ((user == user3) && (senha == senha3))) {
+                    document.getElementById("idMensagem").value = "Acesso permitido"
+                } else if (((user == user1) && (senha != senha1)) || ((user == user2) && (senha != senha2)) || ((user == user3) && (senha != senha3))) {
+                    document.getElementById("idMensagem").value = "Senha incorreta"
+                } else if (((user != user1) && (senha == senha1)) || ((user != user2) && (senha == senha2)) || ((user != user3) && (senha == senha3))) {
+                    document.getElementById("idMensagem").value = "Usuário incorreto"
+                } else {
+                    document.getElementById("idMensagem").value = "Senha e usuário incorretos"
+                }
+            }   document.getElementById("idMensagem").value = "Acesso bloqueado"
         }
         
     </script>

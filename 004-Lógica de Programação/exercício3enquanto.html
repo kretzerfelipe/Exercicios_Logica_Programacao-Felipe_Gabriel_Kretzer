@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <output id="idOut"></output>
+        </div>
+        
+        <script>
+            var saida = "Inicio "
+            var cont = 0
+            while (cont <= 20) {
+                saida = saida + cont + "; "
+                cont = cont + 4
+            }
+            saida = saida + " Acabou"
+            document.querySelector("#idOut").value = saida
+        </script>
+    </body>
+</html>
