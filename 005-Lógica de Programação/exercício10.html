@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idDinheiro">Digite o valor que você tem:</label>
+            <input type="number" id="idDinheiro" name="nmDinheiro">
+        </div>
+
+        <div>
+            <p>Escolha a moeda que você tem:</p>
+
+            <input type="radio" id="idRealT" name="MoedaT">
+            <label for="idRealT">Real</label>
+
+            <input type="radio" id="idDólarT" name="MoedaT">
+            <label for="idDólarT">Dólar</label>
+
+            <input type="radio" id="idEuroT" name="MoedaT">
+            <label for="idEuroT">Euro</label>
+
+            <input type="radio" id="idLibraT" name="MoedaT">
+            <label for="idLibraT">Libra</label>
+
+            <input type="radio" id="idDólarCanadenseT" name="MoedaT">
+            <label for="idDólarCanadenseT">Dólar Canadense</label>
+        </div>
+
+        <div>
+            <p>Escolha a moeda que você quer:</p>
+
+            <input type="radio" id="idRealQ" name="MoedaQ">
+            <label for="idRealQ">Real</label>
+
+            <input type="radio" id="idDólarQ" name="MoedaQ">
+            <label for="idDólarQ">Dólar</label>
+
+            <input type="radio" id="idEuroQ" name="MoedaQ">
+            <label for="idEuroQ">Euro</label>
+
+            <input type="radio" id="idLibraQ" name="MoedaQ">
+            <label for="idLibraQ">Libra</label>
+
+            <input type="radio" id="idDólarCanadenseQ" name="MoedaQ">
+            <label for="idDólarCanadenseQ">Dólar Canadense</label>
+        </div>
+
+        <div>
+            <input type="button" value="Converter" onclick="converter()">
+        </div>
+
+        <output id="idOut"></output>
+        
+        <script>
+
+            function converter() {
+                let realT = document.querySelector("#idRealT").checked
+                let dólarT = document.querySelector("#idDólarT").checked
+                let euroT = document.querySelector("#idEuroT").checked
+                let libraT = document.querySelector("#idLibraT").checked
+                let dólarCanadenseT = document.querySelector("#idDólarCanadenseT").checked
+    
+                let realQ = document.querySelector("#idRealQ").checked
+                let dólarQ = document.querySelector("#idDólarQ").checked
+                let euroQ = document.querySelector("#idEuroQ").checked
+                let libraQ = document.querySelector("#idLibraQ").checked
+                let dólarCanadenseQ = document.querySelector("#idDólarCanadenseQ").checked
+                
+                let saida = ""
+    
+                let dinheiro = Number(document.querySelector("#idDinheiro").value)
+                if (realT) {
+                    let real = dinheiro
+                    if (realQ) {
+                        alert("Você selecionou moedas iguais.")
+                    } else if (dólarQ) {
+                        let dólar = real / 5.16
+                        saida += "Com " + real + " reais você consegue " + dólar.toFixed(2) + " dólares."
+                    } else if (euroQ) {
+                        let euro = real / 5.42
+                        saida += "Com " + real + " reais você consegue " + euro.toFixed(2) + " euros."
+                    } else if (libraQ) {
+                        let libra = real / 6.26
+                        saida += "Com " + real + " reais você consegue " + libra.toFixed(2) + " libras."
+                    } else if (dólarCanadenseQ) {
+                        let dólarCanadense = real / 3.75
+                        saida += "Com " + real + " reais você consegue " + dólarCanadense.toFixed(2) + " dólares canadenses."
+                    }
+                } else if(dólarT) {
+                    let dólar = dinheiro
+                    if (dólarQ) {
+                        alert("Você selecionou moedas iguais.")
+                    } else if (realQ) {
+                        let real = dólar * 5.16
+                        saida += "Com " + dólar + " dólares você consegue " + real.toFixed(2) + " reais."
+                    } else if (euroQ) {
+                        let euro = dólar / 1.05
+                        saida += "Com " + dólar + " dólares você consegue " + euro.toFixed(2) + " euros."
+                    } else if (libraQ) {
+                        let libra = dólar / 1.21
+                        saida += "Com " + dólar + " dólares você consegue " + libra.toFixed(2) + " libras."
+                    } else if (dólarCanadenseQ) {
+                        let dólarCanadense = dólar * 1.38
+                        saida += "Com " + dólar + " dólares você consegue " + dólarCanadense.toFixed(2) + " dólares canadenses."
+                    }
+                } else if(euroT) {
+                    let euro = dinheiro
+                    if (euroQ) {
+                        alert("Você selecionou moedas iguais.")
+                    } else if (realQ) {
+                        let real = euro * 5.42
+                        saida += "Com " + euro + " euros você consegue " + real.toFixed(2) + " reais."
+                    } else if (dólarQ) {
+                        let dólar = euro * 1.05
+                        saida += "Com " + euro + " euros você consegue " + dólar.toFixed(2) + " euros."
+                    } else if (libraQ) {
+                        let libra = euro / 1.15
+                        saida += "Com " + euro + " euros você consegue " + libra.toFixed(2) + " libras."
+                    } else if (dólarCanadenseQ) {
+                        let dólarCanadense = euro * 1.44
+                        saida += "Com " + euro + " euros você consegue " + dólarCanadense.toFixed(2) + " dólares canadenses."
+                    }
+                } else if(libraT) {
+                    let libra = dinheiro
+                    if (libraQ) {
+                        alert("Você selecionou moedas iguais.")
+                    } else if (realQ) {
+                        let real = libra * 6.26
+                        saida += "Com " + libra + " libras você consegue " + real.toFixed(2) + " reais."
+                    } else if (dólarQ) {
+                        let dólar = libra * 1.21
+                        saida += "Com " + libra + " libras você consegue " + dólar.toFixed(2) + " dólares."
+                    } else if (euroQ) {
+                        let euro = libra * 1.15
+                        saida += "Com " + libra + " libras você consegue " + euro.toFixed(2) + " euros."
+                    } else if (dólarCanadenseQ) {
+                        let dólarCanadense = libra * 1.67
+                        saida += "Com " + libra + " libras você consegue " + dólarCanadense.toFixed(2) + " dólares canadenses."
+                    }
+                } else if(dólarCanadenseT) {
+                    let dólarCanadense = dinheiro
+                    if (dólarCanadenseQ) {
+                        alert("Você selecionou moedas iguais.")
+                    } else if (realQ) {
+                        let real = dólarCanadense * 3.75
+                        saida += "Com " + dólarCanadense + " dólares canadenses você consegue " + real.toFixed(2) + " reais."
+                    } else if (dólarQ) {
+                        let dólar = dólarCanadense / 1.37
+                        saida += "Com " + dólarCanadense + " dólares canadenses você consegue " + dólar.toFixed(2) + " dólares."
+                    } else if (libraQ) {
+                        let euro = dólarCanadense / 1.67
+                        saida += "Com " + dólarCanadense + " dólares canadenses você consegue " + euro.toFixed(2) + " libras."
+                    } else if (euroQ) {
+                        let euro = dólarCanadense / 1.45
+                        saida += "Com " + dólarCanadense + " dólares canadenses você consegue " + euro.toFixed(2) + " euros."
+                    }
+                }
+
+                document.querySelector("#idOut").value = saida
+            }
+        </script>
+    </body>
+</html>

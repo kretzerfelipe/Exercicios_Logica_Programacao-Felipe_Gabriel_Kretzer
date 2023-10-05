@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <input type="number" id="idNum" name="nmNum">
+        <input type="button" value="Advinhar" onclick="testar()">
+        <output id="idOut"></output>
+
+        <script>
+            var tentativas = 0
+            var numA = Number(parseInt(Math.random() * 10 + 1))
+            console.log(numA)
+
+            function testar() {
+                let num = document.querySelector("#idNum").value 
+                tentativas ++
+                let saida = ""
+                if (tentativas <= 3) {
+                    if (num == numA) {
+                        saida += "Ganhou"
+                    } else if (tentativas == 3) {
+                    saida += "Perdeu"
+                    } else if (num<numA) {
+                        saida += "O número que você tem que advinhar é maior que " + num
+                    } else if (num>numA) {
+                        saida += "O número que você tem que advinhar é menor que " + num
+                    }
+                }
+            document.querySelector("#idOut").textContent = saida
+            }
+        </script>
+    </body>
+</html>

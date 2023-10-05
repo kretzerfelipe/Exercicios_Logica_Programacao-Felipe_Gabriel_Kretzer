@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idTemp">Digite uma temperatura::</label>
+            <input type="number" id="idTemp" name="nmTemp">
+        </div>
+        <div>
+            <p>Você indicou a temperatura em qual medida?</p>
+
+            <input type="radio" id="idCelsius" name="nmMedida">
+            <label for="idCelsius">Graus Celsius</label>
+
+            <input type="radio" id="idFahrenheit" name="nmMedida">
+            <label for="idFahrenheit">Graus Fahrenheit</label>
+
+            <input type="radio" id="idKelvin" name="nmMedida">
+            <label for="idKelvin">Graus Kelvin</label>
+        </div><br>
+
+        <input type="button" value="Converter para outras medidas." onclick="converter()"><br>
+        <output id="idOut"></output>
+
+        <script>
+            function converter() {
+                let temp = Number(document.querySelector("#idTemp").value)
+                let celsius = document.querySelector("#idCelsius").checked
+                let fahrenheit = document.querySelector("#idFahrenheit").checked
+                let kelvin = document.querySelector("#idKelvin").checked
+                let saida = ""
+                if (celsius) {
+                    celsius = Number(document.querySelector("#idTemp").value)
+                    fahrenheit = (9*celsius+160)/5 
+                    kelvin = celsius + 273
+                    saida += celsius + " graus Celsius equivalem a "  + fahrenheit.toFixed(2) + " graus Fahrenheit ou a " + kelvin.toFixed(2) + " graus Kelvin"
+                } else if (fahrenheit) {
+                    fahrenheit = Number(document.querySelector("#idTemp").value)
+                    celsius = ((fahrenheit * 5)-160)/9
+                    kelvin = ((fahrenheit * 5)-160)/9 + 273
+                    saida += fahrenheit + " graus Fahrenheit equivalem a "  + celsius.toFixed(2) + " graus Celsius ou a " + kelvin.toFixed(2) + " graus Kelvin"
+                } else if (kelvin) {
+                    kelvin = Number(document.querySelector("#idTemp").value)
+                    celsius = kelvin - 273
+                    fahrenheit = (((kelvin - 273) * 9) + 160)/5
+                    saida += kelvin + " graus Kelvin equivalem a " + fahrenheit.toFixed(2) + " graus Fahrenheit ou a " + celsius.toFixed(2) + " graus Celsius"
+                }
+                document.querySelector("#idOut").value = saida 
+            }
+        </script>
+    </body>
+</html>

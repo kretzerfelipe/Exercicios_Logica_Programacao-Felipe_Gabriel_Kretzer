@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+       <input type="number" id="idNum" name="nmNum">
+       <input type="button" value="Inserir Números" onclick="inserirNum()">
+       <input type="button" value="Inserir Números" onclick="verNum()">
+       <output id="idOut"></output> <br>
+       <output id="idOut2"></output> 
+
+       <script>
+        const vet = []
+        const vet2 = []
+        let cont = 0
+        function inserirNum() {
+            num = Number(document.querySelector("#idNum").value)
+            cont ++
+            if (num%10 == 0) {
+                vet.push("\n" + String(cont) + "->" + num)
+                vet2.push(cont + " ")
+            } else {
+                vet.push("\n" + String(cont) + "->" + num)
+            } 
+            document.querySelector("#idNum").value = ""
+        }
+
+        function verNum () {
+            let saida = ""
+            let saida2 = ""
+            saida += vet
+            saida2 += vet2
+            document.querySelector("#idOut").innerText = "\n" + vet
+            document.querySelector("#idOut2").innerText = "Os números múltiplos de 10 estão nas posições: " + vet2 
+        }
+       </script>
+    </body>
+</html>

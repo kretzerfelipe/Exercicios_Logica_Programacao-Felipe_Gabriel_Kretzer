@@ -11,7 +11,7 @@
         <input type="number" id="idNum1" name="nmNum1"><br>
     </div>
     <div>
-        <label for="idNum2">Digite o segundo númer</label><br>
+        <label for="idNum2">Digite o segundo número</label><br>
         <input type="number" id="idNum2" name="nmNum2"><br>
     </div>
     <div>
@@ -28,7 +28,7 @@
             let num1 = Number(document.querySelector("#idNum1").value)
             let num2 = Number(document.querySelector("#idNum2").value)
             let inc = Number(document.querySelector("#idInc").value)
-            let saida = "Inicio "
+            let saida = ""
                 if (inc < 0) {
                     inc = inc * -1
                     console.log(inc)
@@ -43,9 +43,7 @@
                         console.log("For= " + i)
                         saida += i + " "
                     }
-                } 
-                
-                saida +=  "Acabou"
+                }
                 document.querySelector("#idResult").value = saida
         }
     </script>

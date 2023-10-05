@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <output id="idOut"></output>
+        <output id="idOut2"></output>
+        <script>
+            var saida = "Números sorteados: "
+            var contNumM5 = 0
+            var contNumD3 = 0
+                for (let i = 1; i <= 20; i++) {
+                    var numSorteado = parseInt(Math.random() * 11)
+                    console.log(numSorteado)
+                    saida += numSorteado + " "
+
+                    if (numSorteado>5){
+                        contNumM5++
+                    } 
+
+                    if (numSorteado%3 == 0) {
+                        contNumD3++
+                    }
+                } 
+            document.querySelector("#idOut").innerText = saida + "\n Existem " + contNumM5 + " números maiores que 5" + "\n Existem " + contNumD3 + " números divisíveis por 3"
+
+        </script>
+    </body>
+</html>

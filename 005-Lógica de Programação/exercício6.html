@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <label for="idIdade">Mostrar idade</label><br>
+        <input type="number" id="idIdade" name="nmPreço" min="0"><br>
+
+        <input type="button" value="Adicionar idade" onclick="adicionar()"><br>
+
+        <output id="idLista">Esses foram as idades digitados:</output><br><br>
+
+        <label for="idMaior">Qual foi a maior idade?</label>
+        <output id="idMaior"></output><br><br>
+
+        <label for="idMédia">Média</label>
+        <output id="idMédia"></output><br><br>
+
+        <label for="idMaior18">Quantas pessoas tem mais de 18</label>
+        <output id="idMaior18"></output><br><br>
+
+        <label for="idMenor5">Quantas pessoas tem menos que 5</label>
+        <output id="idMenor5"></output><br><br>
+
+        <script>
+            var maior = -Infinity
+            var conta = 0
+            var soma = 0
+            var conta18 = 0
+            var conta5 = 0
+            function adicionar() {
+                let idade = Number(document.querySelector("#idIdade").value)
+                let media = 0
+                if (idade<0){
+                alert("Idade negativa não permitida")
+                } else {
+                    document.getElementById("idLista").innerText += "\n" + idade
+                    conta ++
+                    soma += idade
+                    media = soma / conta
+                    document.getElementById("idMédia").innerText = "\n" + media.toFixed(2)
+                    if (idade > maior) {
+                        maior = idade;
+                        document.getElementById("idMaior").innerText = "\n" + idade
+                    }   if ( idade > 18) {
+                            conta18++
+                            document.getElementById("idMaior18").innerText = "\n" + conta18
+                    }   if ( idade < 5) {
+                            conta5++
+                            document.getElementById("idMenor5").innerText = "\n" + conta5
+                    }   
+                }    
+            }
+        </script>
+    </body>
+</html>

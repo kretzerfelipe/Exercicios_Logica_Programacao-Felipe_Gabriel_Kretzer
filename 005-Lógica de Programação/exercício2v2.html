@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idNum1">Digite o número</label><br>
+            <input type="number" id="idNum1" name="nmNum1" min="2"><br>
+        </div>
+        <div>
+            <label for="idNum2">Digite o número</label><br>
+            <input type="number" id="idNum2" name="nmNum2" min="2"><br>
+        </div>
+        <input type="button" value="Incrementar" onclick="verNúmerosPrimos()"><br>
+        <div>
+            <label for="idResult"></label>
+            <output type="text" id="idResult" name="nmResult"></output>
+        </div>
+
+        <script>
+            function verNúmerosPrimos() {
+                let numIni = Number(document.querySelector("#idNum1").value)
+                let numFim = Number(document.querySelector("#idNum2").value)
+                let saida = "Os números primos entre " + numIni + " e " + numFim + " são: "
+                for (let i = numIni; i <= numFim; i++) {
+                    let div = 0
+                    for (let divisores = 1; divisores <= i; divisores++) {
+                        if (i%divisores == 0) {
+                            div++
+                        }
+                    }
+                        if (div==2) {
+                            saida += i + " "
+                        } 
+                }
+                document.querySelector("#idResult").textContent = saida;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <label for="idPreço">Mostrar preço</label><br>
+        <input type="number" id="idPreço" name="nmPreço"><br>
+
+        <input type="button" value="Adicionar preço" onclick="adicionar()"><br>
+
+        <output id="idLista">Esses foram os preços digitados:</output><br>
+
+        <label for="idMaior">Maior preço:</label>
+        <output id="idMaior"></output><br>
+
+        <label for="idMenor">Menor preço</label>
+        <output id="idMenor"></output><br>
+
+        <script>
+            var maior = -Infinity
+            var menor = Infinity
+            function adicionar() {
+                let preço = Number(document.querySelector("#idPreço").value)
+                document.getElementById("idLista").innerText += "\n" + preço
+                if (preço > maior) {
+                    maior = preço;
+                    document.getElementById("idMaior").innerText = "\n" + preço
+                } if (preço < menor) {
+                    menor = preço 
+                    document.getElementById("idMenor").innerText = "\n" + preço
+                }
+            }
+        </script>
+    </body>
+</html>

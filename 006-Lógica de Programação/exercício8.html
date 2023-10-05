@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <input type="number" id="idNumC" name="nmNumC">
+        <input type="button" value="Chave" onclick="verChave()"><br>
+        <output id="idOut"></output>
+        <script>
+            const vet = []
+            var contagem = 0
+            for (let i = 1; i <= 30; i++) {
+                var numSorteado = parseInt(Math.random() * 15 + 1)
+                vet.push(numSorteado)
+            } 
+            console.log(vet)
+            function verChave() {
+                let num = Number(document.querySelector("#idNumC").value)
+                    for (let i = 0; i < vet.length; i++) {
+                        if (vet[i] == num) {
+                            contagem++
+                        } 
+                    }
+                document.querySelector("#idOut").value = "Seu número foi sorteado " + contagem + " vezes."
+                }
+
+        </script>
+    </body>
+</html>
