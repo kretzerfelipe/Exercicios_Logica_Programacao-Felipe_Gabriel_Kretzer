@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idNotas">Insira as notas</label>
+            <input type="number" id="idNotas" name="nmNotas">
+        </div>
+        <div>
+            <input type="button" value="Inserir" onclick="inserir()">
+        </div>
+        <div>
+            <input type="button" value="Conferir" onclick="conferir()">
+        </div>
+        <output id="idOut"></output>
+        
+        <script>
+        const vet = []
+            function inserir() {
+                let nota = Number(document.querySelector("#idNotas").value)
+                if (nota >= 0 && nota <=10) {
+                    vet.push(nota)
+                    document.querySelector("#idNotas").value = ""
+                } else {
+                    alert("Essa nota não é permitida")
+                }
+
+            }
+
+            function conferir() {
+                let saidaVet = ""
+                let saidaMédia = ""
+                let saidaAcimaDaMédia = ""
+                let saidaMaior = ""
+                let saidaMaior2
+                let saidaPosiçõesMaiores = ""
+                let soma = 0
+                const maiores = []
+                const aMédia = []
+                let maior = -Infinity
+                let maiores2 = 0
+                for (let i = 0; i < vet.length; i++) {
+                    soma += vet[i]
+                    if (i < vet.length - 2){
+                        saidaVet += vet[i] + ", "
+                    } else if (i < vet.length - 1){
+                        saidaVet += vet[i] + " e "
+                    } else {
+                        saidaVet += vet[i] + "."
+                    }
+                    if (vet[i] >= 7) {
+                        aMédia.push(vet[i])
+                    } 
+                    if (vet[i] >= maior) {
+                        maior = vet[i]
+                    } 
+                } 
+
+                for (let i = 0; i < vet.length; i++) {
+                    if (vet[i] == maior) {
+                    maiores.push(i)
+                    maiores2 ++
+                    }
+                }
+
+                for (let i = 0; i < maiores.length; i++) {
+                    if (i < maiores.length - 2){
+                        saidaPosiçõesMaiores += maiores[i] + ", "
+                    } else if (i < maiores.length - 1){
+                        saidaPosiçõesMaiores += maiores[i] + " e "
+                    } else {
+                        saidaPosiçõesMaiores += maiores[i] + "."
+                    }
+                    
+                }
+                let média = soma / vet.length
+                saidaMédia += média.toFixed(2)
+                saidaAcimaDaMédia += aMédia
+                saidaMaior += maior
+                saidaMaior2 = maiores2
+
+                document.querySelector("#idOut").innerText = "\n As notas digitadas foram: " + saidaVet +
+                "\n A média das notas foi: " + saidaMédia +
+                "\n A maior nota foi: " + saidaMaior +
+                "\n Hoveram " + saidaMaior2 + " notas " + saidaMaior +
+                "\n As notas de pontuação " + saidaMaior + " estão nas posições " + saidaPosiçõesMaiores +
+                "\n Vale lembrar que as posições da notas contam a partir de 0"
+            }
+        </script>
+    </body>
+</html>

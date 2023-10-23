@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <label for="idDia">Digite um dia.</label>
+        <input type="number" id="idDia" name="nmDia">
+
+        <input type="button" value="Ver temperatura" onclick="verTemperatura()">
+
+        <output id="idOut"></output>
+
+        <script>
+            const temperaturas = [25, 22, 27, 33, 25, 20, 22, 26, 27, 25, 31, 35, 29, 24, 23, 28, 33, 37, 31, 31, 30, 34, 31, 35, 22, 25, 28, 23, 21, 22]
+            soma = 0
+            saida = ""
+            for (let i = 0; i < temperaturas.length; i++) {
+                soma += temperaturas[i]
+            }
+            média = soma / temperaturas.length
+            function verTemperatura() {
+                if (temperaturas[Number(document.querySelector("#idDia").value)] > média) {
+                    saida ="A temperatura do dia " + document.querySelector("#idDia").value + " foi " + temperaturas[Number(document.querySelector("#idDia").value)] + ". Essa temperatura é maior que a da média " + média + "."
+                } if (temperaturas[Number(document.querySelector("#idDia").value)] < média) {
+                    saida = "A temperatura do dia " + document.querySelector("#idDia").value + " foi " + temperaturas[Number(document.querySelector("#idDia").value)] + ". Essa temperatura é menor que a da média " + média + "."
+                }
+                document.querySelector("#idOut").value = saida
+            }
+        </script>
+    </body>
+</html>

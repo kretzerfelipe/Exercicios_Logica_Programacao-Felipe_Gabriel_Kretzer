@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idNum"></label>
+            <input type="number" id="idNum" name="nmNum">
+        </div>
+        <input type="button" value="Colocar número" onclick="colocarNúmero()">
+        <input type="button" value="Cresecente" onclick="verCrescente()">
+        <input type="button" value="Decrescente" onclick="verDecrescente()">
+        <output id="idOut"></output>
+
+        <script>
+            const números = []
+            function colocarNúmero() {
+                números.push(Number(document.querySelector("#idNum").value))
+            }
+            const crescente = []
+            function verCrescente() {
+                for (let i = 0; i < números.length; i++) {
+                    let contagem = -1
+                    for (let a = 0; a < números.length; a++) 
+                        if (números[i] >= números[a]) {
+                            contagem ++
+                        }
+                    crescente[contagem] = números[i]
+                }
+            console.log(números)
+            console.log(crescente)
+            }      
+        </script>
+    </body>
+</html>

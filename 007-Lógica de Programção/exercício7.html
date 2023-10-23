@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <style>
+    
+            .centralizar {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 2%;
+            }   
+
+            .espaço {
+                margin-left: 20px;
+            }
+
+            fieldset {
+            text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <fieldset id="idCadastro">
+            <legend>Cadastre os jogadores:</legend>
+
+            <div>
+                <p id="idJogadorNúmero"></p>
+                <input type="text" id="idJogadorNum" name="nmJogadorNum" class="jogadores">
+            </div>
+
+            <div class="centralizar">
+                <div>
+                    <input type="button" value="Cadastrar Jogador" onclick="cadastrarJogadores()">
+                </div>
+                <div class="espaço">
+                    <input type="button" value="Ir para jogo" onclick="irParaJogo()">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset id="idJogo">
+            <legend>Jogo de advinhação:</legend>
+
+            <output id="idJogador"></output> <br>
+            <output id="idEstado"></output><br>
+            <input type="text" id="idCapital" name="nmCapital"><br>
+            <input type="button" value="Verificar resposta" onclick="verificarResposta()" id="idVerificarResposta">
+            <input type="button" value="Próxima pergunta" onclick="próximaPergunta()" id="idPróximaPergunta"><br>
+            <output id="idOut"></output>
+        </fieldset>
+
+        <script>
+            const estados = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"]
+            const capitais = ["Rio Branco", "Maceió", "Macapá", "Manaus", "Salvador", "Fortaleza", "Brasília", "Vitória", "Goiânia", "São Luís", "Cuiabá", "Campo Grande", "Belo Horizonte", "Belém", "João Pessoa", "Curitiba", "Recife", "Teresina", "Rio de Janeiro", "Natal", "Porto Alegre", "Porto Velho", "Boa Vista", "Florianópolis", "São Paulo", "Aracaju", "Palmas"]
+            const jogadores = []
+            const contagemPontos = []
+            document.querySelector("#idJogo").style.display = "none"
+            var numJogador = 1
+            var jogadorNum = "Jogador " + numJogador
+            document.querySelector("#idJogadorNúmero").innerText = jogadorNum
+            function cadastrarJogadores() {
+                let jogador = document.querySelector("#idJogadorNum").value
+                jogadores.push(jogador)
+                numJogador++
+                jogadorNum = "Jogador " + numJogador
+                document.querySelector("#idJogadorNúmero").innerText = jogadorNum
+                document.querySelector("#idJogadorNum").value = ""
+                contagemPontos.push(0)
+            }
+
+            function irParaJogo() {
+                document.querySelector("#idCadastro").style.display = "none"
+                document.querySelector("#idJogo").style.display = "block"
+            }
+
+            var saidaJogador = ""
+            saidaJogador = "Clique em próxima pergunta para começar."
+            var contagemJogador = -1
+            var númeroAleatório = 0
+            var contagemPerguntas = -1
+            var maiorPontuação = -Infinity
+            function próximaPergunta() {
+                console.log(jogadores)
+                document.querySelector("#idJogo").style.display = "block"
+                    if (contagemJogador >= jogadores.length - 1) {
+                        contagemJogador = -1
+                    } 
+                    if (contagemPerguntas == jogadores.length * 4 && jogadores.length == 1) {
+                        document.querySelector("#idJogador").value = "Você fez " + contagemPontos[0] + " pontos"
+                        document.querySelector("#idEstado").value = ""
+                        document.querySelector("#idVerificarResposta").style.display = "none"
+                        document.querySelector("#idPróximaPergunta").style.display = "none"
+                        document.querySelector("#idCapital").style.display = "none"
+                    } else if (contagemPerguntas == jogadores.length * 4 && jogadores.length != 1) {
+                        for (let i = 0; i < jogadores.length; i++) {
+                            if (contagemPontos[i] > maiorPontuação){
+                                maiorPontuação = contagemPontos[i]
+                            } else if (contagemPontos[i] = maiorPontuação) {
+                                maiorPontuação += contagemPontos[i]
+                            }
+                        }
+                        document.querySelector("#idJogador").value = "O(s) jogador(es)" + contagemPontos[0] + " pontos"
+                        document.querySelector("#idEstado").value = ""
+                        document.querySelector("#idVerificarResposta").style.display = "none"
+                        document.querySelector("#idPróximaPergunta").style.display = "none"
+                        document.querySelector("#idCapital").style.display = "none"
+                    } else if (jogadores.length == 1) {
+                        document.querySelector("#idJogador").value = "Jogador: " + jogadores[0]
+                        númeroAleatório = parseInt(Math.random() * 27) 
+                        let pergunta = "Qual é a capital do " + estados[númeroAleatório] + "?"
+                        document.querySelector("#idEstado").value = pergunta
+                        document.querySelector("#idCapital").value = ""
+                        contagemPerguntas ++
+                    } else {
+                        contagemJogador ++
+                        document.querySelector("#idJogador").value = "Jogador: " + jogadores[contagemJogador]
+                        númeroAleatório = parseInt(Math.random() * 27)
+                        let pergunta = "Qual é a capital do " + estados[númeroAleatório] + "?"
+                        document.querySelector("#idEstado").value = pergunta
+                        document.querySelector("#idCapital").value = ""
+                        contagemPerguntas ++
+                    }
+
+                }
+                document.querySelector("#idJogador").value = saidaJogador
+
+                function verificarResposta() {
+                let resposta = document.querySelector("#idCapital").value 
+                if (resposta == capitais[númeroAleatório]) {
+                    document.querySelector("#idOut").value = "Acertou"
+                    contagemPontos[contagemJogador] += 1
+                    console.log(contagemPontos)
+                } else {
+                    document.querySelector("#idOut").value = "Errou, a respota era: " + capitais[númeroAleatório]
+                }
+            }
+            
+            </script>
+    </body>
+    </html>

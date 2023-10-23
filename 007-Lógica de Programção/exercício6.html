@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+
+            fieldset {
+                display: inline-block;
+                vertical-align: top;
+                width: 30%;
+                margin-right: 10px;
+                border: 1px solid #ccc;
+                padding: 10px;
+                height: 100vh;
+            }
+
+            .display {
+                display: flex;
+            }
+
+            .border {
+                display: inline-block;
+                width: 9%;
+                margin-right: 10px;
+                border: 1px solid #ccc;
+                padding: 10px;
+            }
+
+            .input {
+                width: 10%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="display">
+            <div class="border">
+                <input type="radio" name="nmRadio" id="idCadastroRadio" onclick="habilitarCadastro()" >
+                <label for="idCadastroRadio">Cadastro</label><br>
+            </div>
+            <div class="border">
+                <input type="radio" name="nmRadio" id="idCadastroNotasRadio" onclick="habilitarCadastroNotas()">
+                <label for="idCadastroNotasRadio">Casdastro Notas</label><br>
+            </div>
+            <div class="border">
+                <input type="radio" name="nmRadio" id="idConsulta" onclick="habilitarConsulta()">
+                <label for="idConsulta">Consulta</label><br>
+            </div>
+        </div>
+
+        <Fieldset id="idFieldsetCadastro">
+            <legend id="idFieldsetCadastro">Cadastro</legend>
+
+            <label for="idNomes">Nome</label>
+            <input type="text" id="idNomes" name="nmNomes"><br><br>
+
+            <label for="idEndereços">Endereço</label>
+            <input type="text" id="idEndereços" name="nmEndereços"><br><br>
+
+            <label for="idNomesMães">Nome da Mãe</label>
+            <input type="text" id="idNomesMães" name="nmNomesMães"><br><br>
+
+            <label for="idNomesPais">Nome do Pai</label>
+            <input type="text" id="idNomesPais" name="nmNomesPais"><br><br>
+
+            <label for="idTelefones">Telefone</label>
+            <input type="number" id="idTelefones" name="nmTelefones"><br><br>
+
+            <input type="button" value="Cadastrar informações" onclick="cadastrarInformações()">
+        </Fieldset>
+
+        <Fieldset id="idFieldsetCadastroNotas">
+            <legend>Cadastro Notas</legend>
+            
+            <label for="idAluno">Aluno:</label>
+            <input type="text" id="idAluno" name="nmAluno"><br><br>
+
+            <label for="idNota1">Nota 1</label>
+            <input type="number" id="idNota1" name="nmNota1"><br><br>
+
+            <label for="idNota2">Nota 2</label>
+            <input type="number" id="idNota2" name="nmNota2"><br><br>
+
+            <label for="idNota3">Nota 3</label>
+            <input type="number" id="idNota3" name="nmNota3"><br><br>
+
+            <label for="idNota4">Nota 4</label>
+            <input type="number" id="idNota4" name="nmNota4"><br><br>
+
+            <input type="button" value="Cadastrar notas" onclick="cadastrarNotas()">
+        </Fieldset>
+
+        <Fieldset id="idFieldsetConsultarNotas">
+            <legend>Consultar nota</legend>
+
+            <label for="idCadastro"></label>
+            <input type="text" id="idCadastro" name="nmCadastro"> <br><br>
+
+            <input type="button" value="Consultar informações" onclick="consultarInformações()"><br><br>
+
+            <output id="idOut"></output>
+        </Fieldset>
+
+        <script>
+            // Aqui, quando clicado um radio button, as informações aprecem
+                document.querySelector("#idFieldsetCadastro").style.display = "none"
+                document.querySelector("#idFieldsetCadastroNotas").style.display = "none"
+                document.querySelector("#idFieldsetConsultarNotas").style.display = "none"
+            function habilitarCadastro() {
+                document.querySelector("#idFieldsetCadastro").style.display = "block"
+                document.querySelector("#idFieldsetCadastroNotas").style.display = "none"
+                document.querySelector("#idFieldsetConsultarNotas").style.display = "none"
+            }
+    
+            function habilitarCadastroNotas() {
+                document.querySelector("#idFieldsetCadastro").style.display = "none"
+                document.querySelector("#idFieldsetCadastroNotas").style.display = "block"
+                document.querySelector("#idFieldsetConsultarNotas").style.display = "none"
+            }
+    
+            function habilitarConsulta() {
+                document.querySelector("#idFieldsetCadastro").style.display = "none"
+                document.querySelector("#idFieldsetCadastroNotas").style.display = "none"
+                document.querySelector("#idFieldsetConsultarNotas").style.display = "block"
+            } 
+
+            // Aqui é código para salvar as informações
+            const nomes = []
+            const endereços = []
+            const nomesMães = []
+            const nomesPais = []
+            const númerosTelefones = []
+            function cadastrarInformações() {
+
+                nomes.push(document.querySelector("#idNomes").value)
+                endereços.push(document.querySelector("#idEndereços").value)
+                nomesMães.push(document.querySelector("#idNomesMães").value)
+                nomesPais.push(document.querySelector("#idNomesPais").value)
+                númerosTelefones.push(document.querySelector("#idTelefones").value)
+
+                document.querySelector("#idNomes").value = ""
+                document.querySelector("#idEndereços").value = ""
+                document.querySelector("#idNomesMães").value = ""
+                document.querySelector("#idNomesPais").value = ""
+                document.querySelector("#idTelefones").value = ""
+            }
+
+            // Aqui é código para casastro de notas
+            const nota1 = []
+            const nota2 = []
+            const nota3 = []
+            const nota4 = []
+            function cadastrarNotas() {
+                let alunoEncontrado = false
+                for (let i = 0; i < nomes.length; i++) {
+                    if (document.querySelector("#idAluno").value === nomes[i]) {
+                        nota1[i] = Number(document.querySelector("#idNota1").value)
+                        nota2[i] = Number(document.querySelector("#idNota2").value)
+                        nota3[i] = Number(document.querySelector("#idNota3").value)
+                        nota4[i] = Number(document.querySelector("#idNota4").value)
+                        alunoEncontrado = true
+                    }
+                } 
+                if (alunoEncontrado) {
+                    console.log("Notas cadastradas com sucesso!");
+                    document.querySelector("#idAluno").value = ""
+                    document.querySelector("#idNota1").value = ""
+                    document.querySelector("#idNota2").value = ""
+                    document.querySelector("#idNota3").value = ""
+                    document.querySelector("#idNota4").value = ""
+                } else {
+                    alert("Este usuário não foi cadastrado");
+                }
+            }
+
+            //Aqui é cógigo para mostrar as informações
+            function consultarInformações() {
+                let alunoEncontrado = false
+                let saida = ""
+                for (let i = 0; i < nomes.length; i++) {
+                    if (document.querySelector("#idCadastro").value === nomes[i]) {
+                        alunoEncontrado = true
+                        média = (nota1[i] + nota2[i] + nota3[i] + nota4[i]) / 4
+                        saida += 
+                        "Aluno:" + nomes[i] +
+                        "\n Notas:" + nota1[i] + ", " + nota2[i] + ", "+ nota3[i] + ", "+ nota4[i] + "." +
+                        "\n Média:" + média
+                        if (média < 7) {
+                            saida += "\n Reprovado"
+                        } else {
+                            saida += "\n Aprovado"
+                        }
+                        
+                    }
+                } 
+                if (alunoEncontrado) {
+                    document.querySelector("#idOut").innerText = saida
+                } else {
+                    alert("Este usuário não foi cadastrado")
+                }
+                console.log(nomes)
+                console.log(endereços)
+                console.log(nomesMães)
+                console.log(nomesPais)
+                console.log(númerosTelefones)
+            }
+        </script>
+    </body>
+</html>

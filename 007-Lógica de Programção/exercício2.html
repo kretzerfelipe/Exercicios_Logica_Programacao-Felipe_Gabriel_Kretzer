@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idNome">Insira as nome.</label>
+            <input type="text" id="idNome" name="nmNome">
+
+            <label for="idIdade">Insira as idade.</label>
+            <input type="number" id="idIdade" name="nmIdade">
+        </div>
+        <div>
+            <input type="button" value="Inserir" onclick="inserir()">
+        </div>
+        <div>
+            <input type="button" value="Conferir menores de idade" onclick="conferir()">
+        </div>
+        <output id="idOut"></output>
+        
+        <script>
+        const nomes = []
+        const idades = []
+        var saida = ""
+            function inserir() {
+                nomes.push(document.querySelector("#idNome").value)
+                idades.push(Number(document.querySelector("#idIdade").value))
+                document.querySelector("#idNome").value = ""
+                document.querySelector("#idIdade").value = ""
+            }
+
+            function conferir() {
+                console.log(nomes)
+                console.log(idades)
+                for (let i = 0; i < nomes.length; i++) {
+                    if (idades[i] < 18){
+                        saida += "\n" + nomes[i] + " tem " + idades[i] + " anos."
+                    }
+                }
+
+                document.querySelector("#idOut").innerText = "As seguintes pessoas são menores de idade:" + saida
+            }
+        </script>
+    </body>
+</html>
