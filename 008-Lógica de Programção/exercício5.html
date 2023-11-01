@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <label for="idNum"></label>
+            <input type="number" id="idNum" name="nmNum">
+        </div>
+        <input type="button" value="Colocar número" onclick="colocarNúmero()">
+        <input type="button" value="Cresecente" onclick="verCrescente()">
+        <input type="button" value="Decrescente" onclick="verDecrescente()">
+        <output id="idOut"></output>
+
+        <script>
+            // Array com números
+            const números = []
+            // Função para colocar no array números
+            function colocarNúmero() {
+                const novoNúmero = Number(document.querySelector("#idNum").value);
+                let númeroJáInserido = false;
+
+                for (let i = 0; i < números.length; i++) {
+                    if (novoNúmero === números[i]) {
+                        númeroJáInserido = true
+                    }
+                }
+                if (númeroJáInserido === false) {
+                    números.push(novoNúmero);
+                }
+
+                if (númeroJáInserido === true) {
+                    alert("Você já inseriu este número");
+                }
+                document.querySelector("#idNum").value = ""
+            }
+            const crescente = []
+            function verCrescente() {
+            saida = ""
+            números.sort((a,b) => a - b)
+            console.log(números)
+            saida = números
+            document.querySelector("#idOut").innerText = saida 
+            } 
+            const decrescente = []
+            function verDecrescente() {
+            saida = ""
+            números.sort((a,b) => b - a)
+            console.log(números)
+            saida = números
+            document.querySelector("#idOut").innerText = saida
+            } 
+        </script>
+    </body>
+</html>

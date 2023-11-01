@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <label for="idFrutas">Frutas</label>
+        <input list="idFrutas">
+        <datalist id="idFrutas">
+            <option value="0" id="Tomate">Tomate</option>
+            <option value="1" id="Morango">Morango</option>
+        </datalist>
+
+        <script>
+            var frutas = ["Tomate", "Morango", "Limão", "Abacaxi", "Pêra", "Uva"]
+
+            frutas.forEach((element, i) => {
+                let datalist = document.querySelector("#idFrutas")
+                let option = document.createElement("option")
+                option.innerText = element
+                option.value = i + 2
+                option.id = element
+                datalist.appendChild(option)
+            });
+        </script>
+    </body>
+</html>

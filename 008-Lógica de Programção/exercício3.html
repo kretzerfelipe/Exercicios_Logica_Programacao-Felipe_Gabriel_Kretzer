@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        td {
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="idNome">Insira o nome do funcionário.</label>
+        <input type="text" id="idNome" name="nmNome">
+
+        <label for="idSalário">Insira o salário do funcionário.</label>
+        <input type="number" id="idSalário" name="nmSalário">
+    </div>
+    <div>
+        <input type="radio" id="idMasculino" name="nmGênero">
+        <label for="idMasculino">Masculino</label>
+
+        <input type="radio" id="idFeminino" name="nmGênero">
+        <label for="idFeminino">Feminino</label>
+    </div>
+    <div>
+        <input type="button" value="Inserir" id="idInserir">
+    </div>
+    <div>
+        <input type="button" value="Conferir menores de idade" id="idConferir">
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="3">Mulheres que ganham mais de 5 mil</th>
+            </tr>
+            <tr>
+                <td>Nome</td>
+                <td>Salário</td>
+                <td>Sexo</td>
+            </tr>
+        </thead>
+        <tbody id="idTbody">
+        </tbody>
+    </table>
+
+    <script>
+        const pessoas = []
+        var inserir = document.querySelector("#idInserir")
+        inserir.addEventListener("click", tratamentoInserir)
+
+        function tratamentoInserir() {
+            let gênero = ""
+            if (document.querySelector("#idMasculino").checked) {
+                gênero = "Masculino"
+            } else {
+                gênero = "Feminino"
+            }
+
+            // Depois de acabar este exercício, quando fui para o exercício 4, percebi que você sugeriu fazer o 4 com o Objeto... Mas eu já tinha feito 3 com obejto kkkkkk, então só dei CTRL C CTRL V
+            const pessoa = {
+                nome: document.querySelector("#idNome").value,
+                salário: Number(document.querySelector("#idSalário").value),
+                gênero: gênero
+            }
+
+            pessoas.push(pessoa)
+            console.log(pessoas)
+        }
+
+        var conferir = document.querySelector("#idConferir")
+        conferir.addEventListener("click", tratamentoConferir)
+
+        function tratamentoConferir() {
+            const fem5000 = pessoas.filter((pessoa) => pessoa.salário > 5000 && pessoa.gênero == "Feminino")
+            console.log(fem5000)
+
+            let tbody = document.querySelector("#idTbody")
+            tbody.innerHTML = ""
+            fem5000.forEach(element => {
+                let tr = document.createElement("tr")
+                let td1 = document.createElement("td")
+                let td2 = document.createElement("td")
+                let td3 = document.createElement("td")
+
+                td1.innerText = element.nome
+                td2.innerText = element.salário
+                td3.innerText = element.gênero
+
+                tbody.appendChild(tr)
+                tr.appendChild(td1)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+            });
+
+        }
+    </script>
+</body>
+
+</html>
